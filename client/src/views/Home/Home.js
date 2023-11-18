@@ -29,13 +29,14 @@ const Home = ()=>{
         {
             products?.map((product , index)=>{
 
-                const {name , description, price , image , category  } = product
+                const { _id ,name , description, price , image , category  } = product
                 return(<ProductCard key={index}
                      name = {name}
                      description={description}
                      price={price}
                      image={image}
                      category={category}
+                     id={_id}
                      />)
             })
         }

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import './ProductCard.css';
 
 function ProductCard({ id, image, name, description, price}) {
-
+      
   return (
     <div>
       <div className="productcard-container">
