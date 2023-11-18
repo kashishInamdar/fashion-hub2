@@ -8,6 +8,10 @@ body{
 
 button{
   cursor: pointer;
-  color: aqua;
-  background-color: black;
+  color:black;
+  background-color: violet;
+  border: none;
+  border-radius: 20px;
+  display: block;
+  margin: 2px auto;
 }

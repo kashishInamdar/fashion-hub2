@@ -6,22 +6,32 @@
     display: block;
     padding: 20px 50px;
     margin: 10px auto;
-    border-radius: 20px;
-    box-shadow: 0px 2px ,5px ,5px , rgb(31, 30, 30);
+   
 }
 
 .InputBox-container{
     display: block;
     font-size: 18px;
     text-align: left;
+    border-radius: 20px;
+    box-shadow: 2px 5px 15px 5px rgba(112, 100, 100, 0.689);
+    padding: 20px;
+    margin-top: 20px;
+}
+.InputBox-container div{
+    margin-top: 20px;
 }
 .input-box{
     height: 40px;
     width: 30vw;
     display: block;
-    margin: 20px , auto;
+    outline: 2px violet;
+    padding: 0px 10px;
+}
+.gender{
+    width: 40px;
+    height: 20px;
 }
 .submit-btn{
     padding: 10px 20px;
-
 }

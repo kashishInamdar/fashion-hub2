@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "./../Signup/Signup.css"
 
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -10,75 +11,81 @@ function Login() {
 
   const logindata = async () => {
 
-    const user = {email,
+    const user = {
+      email,
       password
     }
 
-    try{
+    try {
       const response = await axios.post("/login", user)
 
       alert(response?.data?.message)
-  
+
       if (response?.data?.success) {
         localStorage.setItem('user', JSON.stringify(response?.data?.data));
         window.location.href = "/";
       }
     }
-    catch(e) {
-console.log(e.message)
+    catch (e) {
+      console.log(e.message)
     }
-   
+
   }
 
-  useEffect(()=>{
-    const storedUser = JSON.parse(localStorage.getItem("user") || "{}" );
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
 
-    if(storedUser?.email){
+    if (storedUser?.email) {
       alert("you are already logged in!");
       window.location.href = "/"
     }
-  },[])
+  }, [])
 
   return (
     <>
-    <div className='signup-form'>
-      <h1 className='text-center'>login</h1>
+      <form>
+        <div className='signup-form'>
+          <h1 className='text-center'>login</h1>
+          <div className='InputBox-container'>
 
-      <div>
-          <label htmlFor="email">Email :</label><br />
-          <input type='text'
-            placeholder='Enter your Enail'
-            className='input'
-            id='email'
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
+            <div>
+              <label htmlFor="email">Email :</label><br />
+              <input type='text'
+                placeholder='Enter your Enail'
+                className="input-box"
+                id='email'
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="password">Password:</label><br />
+              <input type='password'
+                placeholder='Enter your Password'
+                className="input-box"
+                id='password'
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </div>
+            <div className='text-center'>
+              <button type='button' onClick={logindata} className="submit-btn" > Login </button>
+            </div>
+
+            <Link to={"/signup"} className='link-form'>Creat a new Account? </Link>
+
+          </div>
+
         </div>
 
-        <div>
-          <label htmlFor="password">Password:</label><br />
-          <input type='password'
-            placeholder='Enter your Password'
-            className='input'
-            id='password'
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-        </div>
-      <div className='text-center'>
-      <button type='button' onClick={logindata}   className='btn m-3'> Login </button>
-      </div>
-
-      <Link to={"/signup"} className='link-form'>Creat a new Account? </Link>
-
-    </div>
-
-
+      </form>
     </>
+
   )
 }
 
