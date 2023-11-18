@@ -1,0 +1,27 @@
+.signup-form{
+    width: fit-content;
+    height: 450px;
+    text-align: center;
+    background-color: #fff;
+    display: block;
+    padding: 20px 50px;
+    margin: 10px auto;
+    border-radius: 20px;
+    box-shadow: 0px 2px ,5px ,5px , rgb(31, 30, 30);
+}
+
+.InputBox-container{
+    display: block;
+    font-size: 18px;
+    text-align: left;
+}
+.input-box{
+    height: 40px;
+    width: 30vw;
+    display: block;
+    margin: 20px , auto;
+}
+.submit-btn{
+    padding: 10px 20px;
+
+}
