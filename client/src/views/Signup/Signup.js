@@ -3,6 +3,7 @@ import "./Signup.css"
 
 import { Link } from 'react-router-dom';
 import axios from "axios"
+import Navbar from "../../components/Navbar/Navbar";
 
 const SignUP = () => {
     const [name, setName] = useState("")
@@ -59,6 +60,7 @@ const SignUP = () => {
 
     return (
         <div>
+            <Navbar />
             <form className="signup-form">
                 <h1>SignUp</h1>
                 <div className="InputBox-container">

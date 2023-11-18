@@ -1,0 +1,38 @@
+.order-container{
+    position: relative;
+    margin: 20px;
+    box-shadow: 0 2px 20px 0 rgb(100, 99, 99);
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.status-order{
+    position: absolute;
+    top: 5px; 
+    right: 5px;
+    width: 70px;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius:0 10px 0 0;
+    color: #fff;
+}
+
+.input-search{
+    display: block;
+    margin: 20px auto;
+    font-size: 18px;
+    padding: 8px 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+}
+.badge-success{
+    background-color: green;
+}
+.badge-warning{
+    background-color: orange;
+}
+.badge-danger{
+    background-color: red;
+}

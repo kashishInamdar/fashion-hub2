@@ -22,7 +22,7 @@ function Navbar() {
         
       </div>
 
-      <div>
+      <div className='user'>
         Hay!😊{userdata.name}
 
         {

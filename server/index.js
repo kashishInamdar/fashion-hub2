@@ -81,16 +81,16 @@ app.post("/login", async (req, res) => {
 
 // post product
 app.post("/product", async (req, res) => {
-    const { title, description, image, price, brand } = req.body;
+    const { name , description, image, price, brand } = req.body;
 
     const newproduct = new product({
-        title: title,
+        name: name ,
         description: description,
         price: price,
         image: image,
         brand: brand,
 
-        // title,
+        // name ,
         // description,
         // price,
         // image,
@@ -154,7 +154,7 @@ app.delete("/product/:_id", async (req, res) => {
 app.get("/products/search", async (req, res) => {
     const { q } = req.query;
     try {
-        const product1 = await product.find({ title: { $regex: q, $options: "i" } })
+        const product1 = await product.find({ name : { $regex: q, $options: "i" } })
         res.json({
             success: true,
             data: product1,

@@ -3,6 +3,7 @@ import axios from 'axios';
 import "./../Signup/Signup.css"
 
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -43,6 +44,7 @@ function Login() {
 
   return (
     <>
+      <Navbar />
       <form>
         <div className='signup-form'>
           <h1 className='text-center'>login</h1>

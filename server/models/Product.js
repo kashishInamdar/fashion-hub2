@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 
 const productschema = new Schema({
-    title:{
+    name:{
         type:String,
         require:true,
     },

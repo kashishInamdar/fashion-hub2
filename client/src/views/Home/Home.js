@@ -1,11 +1,45 @@
-import Navbar from "./../../components/Navbar/Navbar"
 import "./Home.css"
+import Navbar from "./../../components/Navbar/Navbar"
+import axios from "axios"
+import { useEffect, useState } from "react"
+import ProductCard from "./../../components/ProductCard/ProductCard"
 
 const Home = ()=>{
+    const [products , setProducts] = useState([]);
+
+    const loadProducts = async () => {
+        try{
+            const response = await axios.get("/products")
+            setProducts(response?.data?.data);
+        }
+        catch(err){
+            console.log(err);
+            alert("Error Loading products")
+        }
+    }
+
+    useEffect(()=>{
+        loadProducts()
+    },[])
+
     return(
         <>
-    <Navbar />
-        <h1>Home</h1>
+        <Navbar />
+        <div className="product-container">
+        {
+            products?.map((product , index)=>{
+
+                const {name , description, price , image , category  } = product
+                return(<ProductCard key={index}
+                     name = {name}
+                     description={description}
+                     price={price}
+                     image={image}
+                     category={category}
+                     />)
+            })
+        }
+        </div>
         </>
     )
 }

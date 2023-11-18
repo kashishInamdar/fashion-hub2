@@ -2,7 +2,7 @@
     width: fit-content;
     height: 450px;
     text-align: center;
-    background-color: #fff;
+    
     display: block;
     padding: 20px 50px;
     margin: 10px auto;
@@ -34,4 +34,6 @@
 }
 .submit-btn{
     padding: 10px 20px;
+    width: 150px;
+    font-size: 20px;
 }
