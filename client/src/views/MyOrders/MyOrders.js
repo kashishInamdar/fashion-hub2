@@ -1,59 +1,89 @@
-import React from 'react'
-import Navbar from '../../components/Navbar/Navbar';
-import { useState, useEffect } from 'react';
-import axios  from 'axios';
-import './MyOrders.css';
+import React, { useState, useEffect } from 'react';
+import Navbar from "./../../components/Navbar/Navbar";
+import "./MyOrders.css";
+import axios from "axios";
 import { Link } from 'react-router-dom';
 
-const STATUS_BADAGE_COLOUR_MAP = {
-  "pending" : "badge-danger",
-  "shipped": "badge-warning",
-  "delivered": "badge-success"
+const STATUS_BADGE_COLOR_MAP = {
+  "pending": "badge-danger",
+  "shipped":"badge-warning",
+  "delivered":"badge-success"
 }
 
 function MyOrders() {
-  const [orders, setOrders] = useState([]);
+  const [user, setUser] = useState({});
+  const [order, setOrder] = useState([]);
 
-  const localStoragedata = JSON.parse(localStorage.getItem("user") || "{}");
-  // console.log(localStoragedata);
 
-  const loadData = async () => {
-    const response = await axios.get(`/orders/user/${localStoragedata?._id}`)
-    setOrders(response?.data?.data)
-    console.log(response?.data?.data)
-  }
+  useEffect(() => {
+    const storageUse = JSON.parse(localStorage.getItem("user") || '{}');
 
-  useEffect( () => {
-    loadData()
+    if (storageUse?.email) {
+      setUser(storageUse);
+    }
+    else {
+      alert("You are not logged in!");
+      window.location.href = "/login";
+    }
   }, [])
 
-  return (
-<>
-<Navbar/>
-    <div>
 
-      
-<h3>User ID :{localStoragedata._id}</h3>
-      {
-        orders.map((order, i) => {
-          const {product, shipingaddress, quentity, status,deliverycharge} = order;
-          return(
-            <>
-            <div className='order-container'>
-            <h3>{product.title}</h3>
-            <p>Address: {shipingaddress} </p>
-            <span>Price: {product.price}</span> <span>Quentity: {quentity}</span> <span>Deliverycharge: {deliverycharge}</span>
-            <p>Total Pay Amount: {(product.price * quentity)+ deliverycharge} </p>
-            <span className={`status-order ${STATUS_BADAGE_COLOUR_MAP[status]}`}>{status}</span>
-            
-            </div>
+  const loadOrder = async () => {
+    const storageUse = JSON.parse(localStorage.getItem("user") || '{}');
+    const userId = user._id;
+
+    if (!userId) {
+      return;
+    }
+
+    try {
+      const response = await axios.get(`/orders/user/${userId}`);
+
+      setOrder(response?.data?.data);
+
+    } catch (err) {
+      console.log(err.message);
+    }
+
+  }
+  useEffect(() => {
+    loadOrder();
+  }, [user])
+
+  return (
+    <div>
+      <Navbar />
+      <h1 className='text-center'>MyOrder</h1>
+
+      <div className='orders-container'>
+        {
+          order?.map((orderfetch) => {
+            const { product, shippingAddress, deliveryCharge, quantity, status } = orderfetch;
+
+            return (<>
+              <div className='order-subConatiner'>
+
+                <div>
+                  <img src={product.image} className='order-product-img' />
+                </div>
+
+                <div>
+
+               <Link to={`/buy/${product._id}`}><p className='product-name'>{product.name}</p></Link>   
+                  <h4>{shippingAddress} </h4>
+                  <h4>{product.price} x {quantity} = {product.price * quantity}</h4>
+                  <p>{deliveryCharge}</p>
+                  <p className={`order-status ${STATUS_BADGE_COLOR_MAP[status]}`}>{status}</p>
+                  <p></p>
+                </div>
+              </div>
             </>
-          )
-        })
-      }
+            )
+          })
+        }
+      </div>
     </div>
-</>
   )
 }
 
-export default MyOrders;
+export default MyOrders

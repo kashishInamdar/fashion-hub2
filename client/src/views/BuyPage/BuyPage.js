@@ -78,7 +78,7 @@ function BuyPage() {
         <div className='m-5'>
           <h2> {product.title} </h2>
           <p className="card-description"> {product?.description} </p>
-          <p>Brand : {product?.brand}</p>
+          <p>Brand : {product?.brand?product?.brand: "no"}</p>
           <p className="card-price">₹{product?.price}</p>
 
           <div className='quentity-container'>

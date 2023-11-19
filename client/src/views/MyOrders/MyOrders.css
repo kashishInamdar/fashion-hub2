@@ -1,38 +1,48 @@
-.order-container{
-    position: relative;
-    margin: 20px;
-    box-shadow: 0 2px 20px 0 rgb(100, 99, 99);
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-}
+ 
+/* .orders-container{
+    padding: 20px 100px;
+    margin: 50px;
+} */
 
-.status-order{
-    position: absolute;
-    top: 5px; 
-    right: 5px;
-    width: 70px;
-    padding: 5px 10px;
-    text-align: center;
-    border-radius:0 10px 0 0;
-    color: #fff;
-}
-
-.input-search{
-    display: block;
+.order-subConatiner{
+    box-shadow: 0 0 10px 1px rgb(167, 184, 189);
+    
+    width: 700px;
+    display: flex;
     margin: 20px auto;
-    font-size: 18px;
-    padding: 8px 10px;
-    width: 300px;
+    padding:20px;
+    position: relative;
+}
+.order-product-img{
+    height: 100px;
+    width: 100px;
+     display: block;
+     margin: 0 auto;
+     margin-right: 20px;
+}
+
+.product-name{
+   text-decoration: none;
+   color: black;
+    font-size: 30px;
+}
+.order-status{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color:white;
+    padding: 2px 10px;
     border-radius: 5px;
-    border: none;
-}
-.badge-success{
-    background-color: green;
-}
-.badge-warning{
-    background-color: orange;
+    width: 80px;
+    text-align: center;
 }
 .badge-danger{
-    background-color: red;
+color: red;
+}
+.badge-warning{
+color: orange;
+}
+.badge-success{
+color: green;
 }
