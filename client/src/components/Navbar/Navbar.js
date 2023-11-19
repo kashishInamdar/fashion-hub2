@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <div className='nav-container'>
-      <Link to='/'className='logo' >FashionHub</Link>
+      <Link to='/'className='logo' > <span className='logoname'><span className='F'>F</span>ashionHub</span></Link>
 
       <div>
       <Link to="/orders" className='nav-btn'>My Orders</Link>
